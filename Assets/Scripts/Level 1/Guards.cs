@@ -3,49 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class Guard
-{
-    public abstract void Move(Vector3 targetPos);
 
-    public abstract void ShowIndicator();
-
-    public abstract void RemoveIndicator();
-
-}
-
-public class BasicGuard : Guard
-{
-    [SerializeField] NavMeshAgent navMeshAgent;
-
-    public override void Move(Vector3 targetPos)
-    {
-
-        Debug.Log(targetPos);
-    }
-
-    public override void ShowIndicator()
-    {
-        Debug.Log("Indicators are on");
-    }
-
-    public override void RemoveIndicator()
-    {
-        Debug.Log("Indicators are off");
-    }
-
-}
 public class Guards : MonoBehaviour
 {
 
     [SerializeField] bool guardOne;
-    public Guard guardType;
     
-
+    public NavMeshAgent navMeshAgent; 
+    
+    
     private void Start()
     {
-        if(guardOne)
+        navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+
+    public void Move(Vector3 targetPos)
+    {
+        navMeshAgent.SetDestination(targetPos);
+        GetComponent<Animator>().SetBool("Guard Ready", false);
+    }
+
+    public void ShowIndicator()
+    {
+        
+        GetComponent<Animator>().SetBool("Guard Ready", true);
+
+        //Instantiate accordingly
+    }
+
+    public void RemoveIndicator()
+    {
+        GetComponent<Animator>().SetBool("Guard Ready", false);
+
+        GameObject[] indicatorObjects = GameObject.FindGameObjectsWithTag("Indicator");
+        foreach (GameObject indicator in indicatorObjects)
         {
-            guardType = new BasicGuard();
+            Destroy(indicator.gameObject);
         }
     }
 

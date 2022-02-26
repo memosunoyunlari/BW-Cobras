@@ -16,7 +16,8 @@ public class GameplayManager : MonoBehaviour
 
     private Guards guardScript;
 
-    private bool Indicator;
+    public bool IndicatorIsOn = false;
+
 
 
     private void Awake()
@@ -34,23 +35,17 @@ public class GameplayManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Mouse0) && yourTurn)
         {
             castRay();
-            
-
-            if (Physics.Raycast(guardRay, 100, boardMask))
-            {
-                Debug.Log("wow");
-            }
 
                 switch (target)
-            {
+                {
 
                 case "Guard":
                     
-                    if (Indicator == false)
+                    if (IndicatorIsOn == false)
                     {
-                        guardScript.guardType.ShowIndicator();
+                        guardScript.ShowIndicator();
                    
-                        Indicator = true;
+                        IndicatorIsOn = true;
                     }
                     else break;
 
@@ -58,35 +53,28 @@ public class GameplayManager : MonoBehaviour
 
                 case "Board":
 
-                    guardScript.guardType.Move(targetPos);
+                    guardScript.Move(targetPos);
                     yourTurn = false;
-                    guardScript.guardType.RemoveIndicator();
+                    guardScript.RemoveIndicator();
                    
                     break;
 
                 case "Something Else":
 
-                    if (Indicator)
+                    if (IndicatorIsOn == true)
                     {
-                        Indicator = false;
-                        guardScript.guardType.RemoveIndicator();
-                        GameObject[] indicatorObjects = GameObject.FindGameObjectsWithTag("Indicator");
-                        foreach (GameObject indicator in indicatorObjects)
-                        {
-                            Destroy(indicator.gameObject);
-                        }
+                        guardScript.RemoveIndicator();
+                        IndicatorIsOn = false;
+                        
                     }
                     
                     break;
 
-                    
             
             
             
             
-            
-            
-            }
+                }
         }
     }
 
@@ -103,8 +91,11 @@ public class GameplayManager : MonoBehaviour
         else if (Physics.Raycast(guardRay, out guardRayHit, 60, boardMask))
         {
             target = "Board";
-            targetPos = guardRayHit.collider.gameObject.transform.position;
-            Debug.Log(target);
+            targetPos = new Vector3(
+                Mathf.Abs(guardRayHit.collider.gameObject.transform.position.x), 
+                Mathf.Abs(guardRayHit.collider.gameObject.transform.position.y), 
+                Mathf.Abs(guardRayHit.collider.gameObject.transform.position.z));
+            Debug.Log(targetPos);
 
         }
         else target = "Something Else";
