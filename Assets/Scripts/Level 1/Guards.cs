@@ -8,6 +8,8 @@ public class Guards : MonoBehaviour
 {
 
     [SerializeField] bool guardOne;
+
+    [SerializeField] GameObject longIndicator;
     
     public NavMeshAgent navMeshAgent; 
     
@@ -27,6 +29,7 @@ public class Guards : MonoBehaviour
     {
         
         GetComponent<Animator>().SetBool("Guard Ready", true);
+        Instantiate(longIndicator, new Vector3(transform.position.x - 8, 0.25f, transform.position.z), Quaternion.Euler(new Vector3(0,-90,0)));
 
         //Instantiate accordingly
     }

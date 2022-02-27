@@ -92,9 +92,9 @@ public class GameplayManager : MonoBehaviour
         {
             target = "Board";
             targetPos = new Vector3(
-                Mathf.Abs(guardRayHit.collider.gameObject.transform.position.x), 
-                Mathf.Abs(guardRayHit.collider.gameObject.transform.position.y), 
-                Mathf.Abs(guardRayHit.collider.gameObject.transform.position.z));
+                Mathf.Round(guardRayHit.collider.gameObject.transform.position.x), 
+                Mathf.Round(guardRayHit.collider.gameObject.transform.position.y), 
+                Mathf.Round(guardRayHit.collider.gameObject.transform.position.z));
             Debug.Log(targetPos);
 
         }
