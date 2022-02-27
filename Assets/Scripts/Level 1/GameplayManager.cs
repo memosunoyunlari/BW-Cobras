@@ -54,7 +54,7 @@ public class GameplayManager : MonoBehaviour
                 case "Board":
 
                     guardScript.Move(targetPos);
-                    yourTurn = false;
+                    //yourTurn = false;
                     guardScript.RemoveIndicator();
                    
                     break;
