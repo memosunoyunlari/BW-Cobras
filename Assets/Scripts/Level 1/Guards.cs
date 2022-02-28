@@ -26,11 +26,6 @@ public class Guards : MonoBehaviour
 
     
 
-    private void Update()
-    {
-       
-    }
-
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -58,23 +53,26 @@ public class Guards : MonoBehaviour
         {
             
 
-            if (!Physics.Raycast(transform.position + new Vector3(0,1,0), indicatorDirections[i], out endHit, 8, endLayer))
+            if (Physics.Raycast(transform.position + new Vector3(0,1,0), indicatorDirections[i], out endHit, 4, endLayer) && endHit.collider.gameObject.CompareTag("Enemy"))
             {
-                Instantiate(longIndicator, transform.position + longIndicatorPosOffsets[i], indicatorRotations[i]);
-                //Debug.DrawRay(transform.position + new Vector3(0, 2, 0), indicatorDirections[i] * 8, Color.red, 5);
+                
+                Instantiate(longAttackIndicator, transform.position + longIndicatorPosOffsets[i], indicatorRotations[i]);
 
             }
 
             else if (Physics.Raycast(transform.position + new Vector3(0, 1, 0), indicatorDirections[i], out endHit, 8, endLayer))
             {
-                if (Vector3.Distance(transform.position, endHit.transform.position) < 5)
+
+                if (Vector3.Distance(transform.position, endHit.point) > 3)
                 {
-                    Instantiate(longAttackIndicator, transform.position + longIndicatorPosOffsets[i], indicatorRotations[i]);
-                }
-                else if(Vector3.Distance(transform.position, endHit.transform.position) > 5)
-                {
+                    
                     Instantiate(shortIndicator, transform.position + shortIndicatorPosOffsets[i], indicatorRotations[i]);
                 }
+
+            }
+            else if (!Physics.Raycast(transform.position + new Vector3(0, 1, 0), indicatorDirections[i], out endHit, 8, endLayer))
+            {
+                Instantiate(longIndicator, transform.position + longIndicatorPosOffsets[i], indicatorRotations[i]);
             }
 
 
@@ -83,7 +81,7 @@ public class Guards : MonoBehaviour
         GetComponent<Animator>().SetBool("Guard Ready", true);
         
 
-        //Instantiate accordingly
+      
     }
 
     public void RemoveIndicator()
