@@ -23,6 +23,8 @@ public class Guards : MonoBehaviour
     [SerializeField] LayerMask endLayer;
     private RaycastHit endHit;
 
+    
+
 
     
 
@@ -41,7 +43,8 @@ public class Guards : MonoBehaviour
     public void Move(Vector3 targetPos)
     {
         navMeshAgent.SetDestination(targetPos);
-        GetComponent<Animator>().SetBool("Guard Ready", false);
+        
+        ReadyAnimation("false");
     }
 
     public void ShowIndicator()
@@ -78,9 +81,8 @@ public class Guards : MonoBehaviour
 
         }
 
-        GetComponent<Animator>().SetBool("Guard Ready", true);
-        
-
+        ReadyAnimation("true");
+       
       
     }
 
@@ -93,6 +95,19 @@ public class Guards : MonoBehaviour
         {
             Destroy(indicator.gameObject);
         }
+    }
+
+    public void ReadyAnimation(string readiness)
+    {
+        switch(readiness)
+        {
+            case "true":
+                GetComponent<Animator>().SetBool("Guard Ready", true);
+                break;
+            case "false":
+                GetComponent<Animator>().SetBool("Guard Ready", false);
+                break;
+        }    
     }
 
 }

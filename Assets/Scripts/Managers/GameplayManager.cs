@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameplayManager : MonoBehaviour
 {
     private bool yourTurn = true;
+    
 
     private Ray guardRay;
     private RaycastHit guardRayHit;
@@ -22,7 +23,9 @@ public class GameplayManager : MonoBehaviour
 
     private void Awake()
     {
+
         
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
 
     }
@@ -54,7 +57,9 @@ public class GameplayManager : MonoBehaviour
                 case "Board":
 
                     guardScript.Move(targetPos);
-                    //yourTurn = false;
+
+                    StartCoroutine(EnemyTurn(2));
+                    
                     guardScript.RemoveIndicator();
                    
                     break;
@@ -104,4 +109,31 @@ public class GameplayManager : MonoBehaviour
 
         return target;
     }
+
+    IEnumerator EnemyTurn(int Delay)
+    {
+        yourTurn = false;
+
+        yield return new WaitForSeconds(Delay);
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.gameObject.GetComponent<Enemies>().ReadyAnimation("true");
+        }
+
+        yield return new WaitForSeconds(2*Delay/3);
+
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.gameObject.GetComponent<Enemies>().Move();
+            enemy.gameObject.GetComponent<Enemies>().ReadyAnimation("false");
+        }
+
+        yield return new WaitForSeconds(Delay/2);
+
+        yourTurn = true;
+    }
+
 }

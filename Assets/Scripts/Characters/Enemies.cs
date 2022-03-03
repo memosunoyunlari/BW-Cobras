@@ -1,18 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemies : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    private NavMeshAgent navMeshAgent;
+
+    [SerializeField] int moveRange; 
+
+
+    private void Start()
     {
-        
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Move()
     {
-        
+        Vector3 targetPos = transform.position + Vector3.right * moveRange;
+
+        navMeshAgent.SetDestination(targetPos);
+    }
+
+    public void ReadyAnimation(string readiness)
+    {
+        switch (readiness)
+        {
+            case "true":
+                GetComponent<Animator>().SetBool("Guard Ready", true);
+                break;
+            case "false":
+                GetComponent<Animator>().SetBool("Guard Ready", false);
+                break;
+        }
     }
 }
