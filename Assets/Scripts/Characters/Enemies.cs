@@ -8,7 +8,9 @@ public class Enemies : MonoBehaviour
 
     private NavMeshAgent navMeshAgent;
 
-    [SerializeField] int moveRange; 
+    [SerializeField] int moveRange;
+
+    public bool setRotation = true;
 
 
     private void Start()
@@ -35,4 +37,9 @@ public class Enemies : MonoBehaviour
                 break;
         }
     }
+
+    //setting rotation after the initial setup
+
+    
+
 }

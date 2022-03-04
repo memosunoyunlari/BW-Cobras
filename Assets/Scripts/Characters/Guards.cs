@@ -33,9 +33,9 @@ public class Guards : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         indicatorDirections = new[] { -Vector3.forward, -Vector3.right, Vector3.forward, Vector3.right };
-        longIndicatorPosOffsets = new[] { new Vector3(0, 0, -8), new Vector3(-8, 0, 0), new Vector3(0, 0, 8), new Vector3(8, 0, 0) };
+        longIndicatorPosOffsets = new[] { new Vector3(0, 0, -6), new Vector3(-6, 0, 0), new Vector3(0, 0, 6), new Vector3(6, 0, 0) };
         shortIndicatorPosOffsets = new[] { new Vector3(0,0,-4), new Vector3(-4, 0, 0), new Vector3(0, 0, 4), new Vector3(4, 0, 0) };
-        indicatorRotations = new[] { Quaternion.Euler(0, -180, 0), Quaternion.Euler(0, -90, 0), Quaternion.Euler(0, 0, 0), Quaternion.Euler(0, 90, 0) };
+        indicatorRotations = new[] { Quaternion.Euler(0, 90, 0), Quaternion.Euler(0, 180, 0), Quaternion.Euler(0, 270, 0), Quaternion.Euler(0, 360, 0) };
 
 
     }
