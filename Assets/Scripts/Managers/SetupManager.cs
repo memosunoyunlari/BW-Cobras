@@ -79,8 +79,19 @@ public class SetupManager : MonoBehaviour
 
         //indikatörlerini göster ve bir süre sonra da tutorial ekranýný çýkar ve orada da butonla onlarý ileri götür sonra da guard'a ait bilgiyi içerecek paneli çýkar ve yourTurn bool'unu buton ile deðiþtir.
 
-        
-        
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            enemies[i].gameObject.GetComponent<NavMeshAgent>().speed = 5;
+            enemies[i].gameObject.GetComponent<Enemies>().SetIndicator();
+
+
+        }
+
+        //tutorial panel ve butonla ileri giden elemanlar 
+
+        //delay ve senin için panel ve senin için yourTurn'ü açan gizli karakterin üstünde buton 
+
+
 
     }
 

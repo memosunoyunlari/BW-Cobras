@@ -12,6 +12,8 @@ public class Enemies : MonoBehaviour
 
     public bool setRotation = true;
 
+    [SerializeField] GameObject enemyIndicator; 
+
 
     private void Start()
     {
@@ -38,7 +40,11 @@ public class Enemies : MonoBehaviour
         }
     }
 
-    //setting rotation after the initial setup
+    public void SetIndicator()
+    {
+         Instantiate(enemyIndicator, transform.position + new Vector3(4,0,0), Quaternion.identity);
+
+    }
 
     
 

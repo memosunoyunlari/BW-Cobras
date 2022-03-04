@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300632869693776153}
-  m_LocalRotation: {x: -0.29115412, y: 0.95650065, z: -0.017530723, w: -0.005336314}
-  m_LocalPosition: {x: 0.2720001, y: 0.181, z: -0.2970001}
+  m_LocalRotation: {x: -0.35484827, y: 0.92925584, z: -0.09602927, w: -0.036670007}
+  m_LocalPosition: {x: 0.41, y: 0.181, z: -0.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2084492008877296302}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 2.1, y: 90, z: -33.86}
+  m_LocalEulerAnglesHint: {x: 11.8, y: 180, z: -41.8}
 --- !u!33 &6648194693800968738
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047207344532987336}
   m_LocalRotation: {x: -0.10878707, y: 0.6986884, z: -0.25513175, w: 0.65947545}
-  m_LocalPosition: {x: -0.2570001, y: 0.099999994, z: 1.2270002}
+  m_LocalPosition: {x: -0.2570001, y: 0.09999999, z: 1.2270002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2084492008877296302}
@@ -218,9 +218,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guardOne: 1
-  longIndicator: {fileID: 3470488533917977729, guid: cddf36d2347882b4e8371d37cfc8376f, type: 3}
-  shortIndicator: {fileID: 2021664202069061111, guid: e1683b76d7ae3fe40982f67285bedf85, type: 3}
-  longAttackIndicator: {fileID: 8435804800549900866, guid: a2dbc6c85274af44c8272230806e7385, type: 3}
+  longIndicator: {fileID: 3584203456074060564, guid: cddf36d2347882b4e8371d37cfc8376f, type: 3}
+  shortIndicator: {fileID: 6052265751343748358, guid: e1683b76d7ae3fe40982f67285bedf85, type: 3}
+  longAttackIndicator: {fileID: 1188268833263591075, guid: 945829feb0de9e045bbc0be3049cce80, type: 3}
   endLayer:
     serializedVersion: 2
     m_Bits: 512

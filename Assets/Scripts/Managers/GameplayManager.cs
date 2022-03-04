@@ -114,6 +114,8 @@ public class GameplayManager : MonoBehaviour
     {
         yourTurn = false;
 
+        //enemy indikatörlerini kapat
+
         yield return new WaitForSeconds(Delay);
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -132,6 +134,8 @@ public class GameplayManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(Delay/2);
+
+        //enemy indikatörlerini aç
 
         yourTurn = true;
     }
